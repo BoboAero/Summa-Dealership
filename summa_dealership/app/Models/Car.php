@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Car extends Model
@@ -14,8 +15,8 @@ class Car extends Model
 
     ];
 
-    public function repair(): HasOne{
-        return $this->hasOne(Repair::class);
+    public function repairs(): HasMany{
+        return $this->hasMany(Repair::class);
     }
 
 
