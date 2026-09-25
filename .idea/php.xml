@@ -132,6 +132,9 @@
       <path value="$PROJECT_DIR$/summa_dealership/vendor/league/flysystem" />
     </include_path>
   </component>
+  <component name="PhpProjectSharedConfiguration">
+    <option name="suggestChangeDefaultLanguageLevel" value="false" />
+  </component>
   <component name="PhpStanOptionsConfiguration">
     <option name="transferred" value="true" />
   </component>

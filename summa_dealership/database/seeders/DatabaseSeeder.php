@@ -6,6 +6,7 @@ use App\Models\Car;
 use App\Models\Part;
 use App\Models\Repair;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,25 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // Roles
+
+        $role1 = Role::create([
+            'name' => 'Manager',
+        ]);
+        $role2 = Role::create([
+            'name' => 'Hoofd Monteur',
+        ]);
+        $role3 = Role::create([
+            'name' => 'Hoofd Verkoper',
+        ]);
+        $role4 = Role::create([
+            'name' => 'Monteur',
+        ]);
+        $role5 = Role::create([
+            'name' => 'Verkoper',
+        ]);
+
         /*
           Users
         */
@@ -26,60 +46,70 @@ class DatabaseSeeder extends Seeder
         $user1 = User::create([
             'name' => 'John Doe',
             'email' => 'john@example.com',
+            'role_id' => $role1->id,
             'password' => Hash::make('password'),
         ]);
 
         $user2 = User::create([
             'name' => 'Jane Smith',
             'email' => 'jane@example.com',
+            'role_id' => $role2->id,
             'password' => Hash::make('password'),
         ]);
 
         $user3 = User::create([
             'name' => 'Mike Johnson',
             'email' => 'mike@example.com',
+            'role_id' => $role3->id,
             'password' => Hash::make('password'),
         ]);
 
         $user4 = User::create([
             'name' => 'Emily Davis',
             'email' => 'emily@example.com',
+            'role_id' => $role4->id,
             'password' => Hash::make('password'),
         ]);
 
         $user5 = User::create([
             'name' => 'David Wilson',
             'email' => 'david@example.com',
+            'role_id' => $role4->id,
             'password' => Hash::make('password'),
         ]);
 
         $user6 = User::create([
             'name' => 'Sarah Brown',
             'email' => 'sarah@example.com',
+            'role_id' => $role4->id,
             'password' => Hash::make('password'),
         ]);
 
         $user7 = User::create([
             'name' => 'James Miller',
             'email' => 'james@example.com',
+            'role_id' => $role4->id,
             'password' => Hash::make('password'),
         ]);
 
         $user8 = User::create([
             'name' => 'Laura Taylor',
             'email' => 'laura@example.com',
+            'role_id' => $role5->id,
             'password' => Hash::make('password'),
         ]);
 
         $user9 = User::create([
             'name' => 'Robert Anderson',
             'email' => 'robert@example.com',
+            'role_id' => $role5->id,
             'password' => Hash::make('password'),
         ]);
 
         $user10 = User::create([
             'name' => 'Emma Thomas',
             'email' => 'emma@example.com',
+            'role_id' => $role5->id,
             'password' => Hash::make('password'),
         ]);
 
@@ -279,6 +309,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+
+
+
+
         /*
           Attach Parts to Repairs
         */
@@ -328,6 +362,7 @@ class DatabaseSeeder extends Seeder
         $repair10->parts()->attach([
             $wipers->id,
         ]);
+
 
     }
 }
