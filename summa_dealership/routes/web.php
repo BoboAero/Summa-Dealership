@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('cars', CarController::class);
     Route::resource('parts', PartController::class);
 
-    Route::get('/dashboard/users/manage', [UserController::class, 'index'])->name('users.index');
+    Route::get('/dashboard/users/', [UserController::class, 'index'])->name('users.index');
     Route::get("/dashboard/users/create", [UserController::class, 'create'])->name('users.create');
 });
 

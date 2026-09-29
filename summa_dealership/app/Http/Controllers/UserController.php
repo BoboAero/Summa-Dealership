@@ -14,7 +14,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('dashboard.user.manage', compact('users'));
+        return view('dashboard.user.index', compact('users'));
     }
 
     /**
