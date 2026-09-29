@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    background-color: #F5EDED;
+}
+
 .UserManagement{
     display: grid;
     grid-template-columns: 2.5fr 4fr 1fr 2.5fr;

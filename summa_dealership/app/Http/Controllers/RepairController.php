@@ -12,7 +12,8 @@ class RepairController extends Controller
      */
     public function index()
     {
-        //
+        $repairs = Repair::all();
+        return view('dashboard.repair.index', compact('repairs'));
     }
 
     /**
@@ -36,7 +37,7 @@ class RepairController extends Controller
      */
     public function show(Repair $repair)
     {
-        //
+        return view('dashboard.repair.show', compact('repair'));
     }
 
     /**
@@ -44,7 +45,7 @@ class RepairController extends Controller
      */
     public function edit(Repair $repair)
     {
-        //
+       //
     }
 
     /**
