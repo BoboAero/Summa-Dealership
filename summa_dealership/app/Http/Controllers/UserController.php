@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Part;
 use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\Role;
 
-class PartController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $parts = Part::all();
-        return view('test', compact('parts'));
+        $users = User::all();
+        return view('dashboard.user.manage', compact('users'));
     }
 
     /**
@@ -21,7 +22,8 @@ class PartController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('dashboard.user.create', compact('roles'));
     }
 
     /**
@@ -35,7 +37,7 @@ class PartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Part $part)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +45,7 @@ class PartController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Part $part)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +53,7 @@ class PartController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Part $part)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +61,7 @@ class PartController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Part $part)
+    public function destroy(string $id)
     {
         //
     }
