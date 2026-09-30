@@ -20,12 +20,17 @@ class roleCheck
         if ($user === null) {
             return redirect()->route('dashboard');
         }
-        $role = strtolower($user->Role->name);
+        $role = str_replace(' ', '', strtolower($user->Role->name));
 
         if ($role !== $roleName && $role !== 'manager'){
-            echo "You do not have permission to access this page, need role " . $roleName . " or higher.";
-            echo "Current role: " . $user->Role->name;
-            return redirect()->route('dashboard');
+            if ($roleName === 'monteur' && $role === 'hoofdmonteur'){
+                return $next($request);
+            }
+            else if ($roleName === 'verkoper' && $role === 'hoofdverkoper'){
+                return $next($request);
+            } else {
+                return redirect()->route('dashboard');
+            }
         }
         return $next($request);
     }
