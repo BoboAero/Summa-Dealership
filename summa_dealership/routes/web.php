@@ -27,7 +27,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard/users/', [UserController::class, 'index'])->name('users.index');
     Route::get("/dashboard/users/create", [UserController::class, 'create'])->name('users.create');
+    Route::get("/dashboard/users/{user}/edit", [UserController::class, 'edit'])->name('users.edit');
     Route::post("/dashboard/users/store", [UserController::class, 'store'])->name('users.store');
+    Route::delete("/dashboard/users/{user}/destroy", [UserController::class, 'destroy'])->name('users.destroy');
+    Route::put("/dashboard/users/{user}/update", [UserController::class, 'update'])->name('users.update');
 });
 
 require __DIR__.'/auth.php';

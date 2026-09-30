@@ -27,7 +27,7 @@
                     <label for="userRole">Role</label>
                     <select id="userRole" name="role_id">
                         @foreach($roles as $role)
-                            <option value="{{$role->id}}" @if($role->id = 5) selected @endif>{{$role->name}}</option>
+                            <option value="{{$role->id}}" @if($role->id == 5) selected @endif>{{$role->name}}</option>
                         @endforeach
                     </select>
                 </div>

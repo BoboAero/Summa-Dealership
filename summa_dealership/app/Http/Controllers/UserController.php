@@ -75,7 +75,9 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('dashboard.user.edit', compact('user', 'roles'));
     }
 
     /**
@@ -83,7 +85,21 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+            'role_id' => ['required', 'integer'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user = User::findOrFail($id);
+
+        $user->name = $this->ucname($request->name);
+        $user->email = strtolower($request->email);
+        $user->role_id = $request->role_id;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return(redirect(route('users.index')));
     }
 
     /**
@@ -91,7 +107,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return(redirect(route('users.index')));
     }
 
 
