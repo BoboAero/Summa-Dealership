@@ -1,3 +1,62 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background-color: #F5EDED;
+}
+
+.UserManagement{
+    display: grid;
+    grid-template-columns: 2.5fr 4fr 1fr 2.5fr;
+    grid-template-rows: 1fr 2fr auto 1fr;
+    grid-template-areas:
+        '. . . .'
+        '. userHeader newUser .'
+        '. userTable userTable .'
+        '. . . .';
+    gap: 15px;
+    align-content: center;
+}
+
+.TableHeader{
+    align-self: left;
+    padding-left: 5%;
+}
+
+.TableAddButton{
+    align-self: right;
+}
+
+/*Crud Index Table*/
+.ManageTable{
+    background-color: #A096CE;
+    border-radius: 25px;
+    width: 100%;
+    tr:nth-child(even){
+        background-color: #C1B6F9;
+        width: 100%;
+    }
+    td{
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+/*Cu = create / update */
+.CuBody{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.CuForm{
+    background-color: #A096CE;
+    border-radius: 25px;
+    width: 50%;
+    height: auto;
+}
+
+
+
