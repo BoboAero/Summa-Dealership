@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard/users/', [UserController::class, 'index'])->name('users.index');
     Route::get("/dashboard/users/create", [UserController::class, 'create'])->name('users.create');
+    Route::post("/dashboard/users/store", [UserController::class, 'store'])->name('users.store');
 });
 
 require __DIR__.'/auth.php';

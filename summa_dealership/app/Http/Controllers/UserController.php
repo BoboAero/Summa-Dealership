@@ -2,15 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Role;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    public function ucname($input){
+        $output = "";
+        $exceptions = array("van", "der", "den");
+        $input = strtolower($input);
+        foreach(explode(" ", $input) as $key => $word){
+            $output .= (($word == $word[0]) ? "" : " ") . ((!in_array($word, $exceptions)) ? ucfirst($word) : $word);
+
+        }
+        return $output;
+    }
+
     public function index()
     {
         $users = User::all();
@@ -31,7 +45,21 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+           'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'role_id' => ['required', 'integer'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user = User::create([
+            'name' => $this->ucname($request->name),
+            'email' => strtolower($request->email),
+            'role_id' => $request->role_id,
+            'password' => Hash::make($request->password),
+        ]);
+
+        return(redirect(route('users.index')));
     }
 
     /**
@@ -65,4 +93,6 @@ class UserController extends Controller
     {
         //
     }
+
+
 }

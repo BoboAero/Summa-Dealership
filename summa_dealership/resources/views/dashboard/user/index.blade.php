@@ -9,7 +9,7 @@
     <body>
     <div class="UserManagement">
         <h1 class="TableHeader" style="grid-area: userHeader;">Gebruikers</h1>
-        <button style="grid-area: newUser;">Nieuwe Gebruiker</button>
+        <a style="grid-area: newUser;" href="{{route('users.create')}}">Nieuwe Gebruiker</a>
         <table class="ManageTable" style="grid-area: userTable;">
             <thead>
             <tr class="">

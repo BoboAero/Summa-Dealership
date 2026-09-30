@@ -4,6 +4,7 @@
 
 .UserManagement{
     display: grid;
+    height: 100%;
     grid-template-columns: 2.5fr 4fr 1fr 2.5fr;
     grid-template-rows: 1fr 2fr auto 1fr;
     grid-template-areas:
@@ -29,9 +30,11 @@
     background-color: #A096CE;
     border-radius: 25px;
     width: 100%;
+    overflow: hidden;
     tr:nth-child(even){
         background-color: #C1B6F9;
         width: 100%;
+
     }
     td{
         padding: 10px;
@@ -45,6 +48,7 @@
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .CuForm{
@@ -53,6 +57,46 @@
     width: 50%;
     height: auto;
 }
+
+.CuFormGrid{
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+    grid-template-rows: 2fr 2fr 2fr;
+    grid-template-areas:
+        'name password'
+        'email role'
+        'back create';
+    div{
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+    select, input{
+        width: 75%;
+    }
+}
+
+.CuBackButton{
+    width: 33%;
+    height: 50%;
+    color: #000000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #8E8E93;
+    border-radius: 10px;
+}
+
+.CuCreateButton{
+    width: 33%;
+    height: 50%;
+    color: #FFFFFF;
+    background-color: #20126E;
+    border-radius: 10px;
+}
+
+
 
 
 
