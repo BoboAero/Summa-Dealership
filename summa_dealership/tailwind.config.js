@@ -10,12 +10,16 @@ export default {
     ],
 
     theme: {
-        extend: {
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
-            },
+    extend: {
+        colors: {
+            'dark-blue': '#20126E',
+            'pink': '#E83089',
+        },
+        fontFamily: {
+            jaldi: ['Jaldi', 'sans-serif'],
         },
     },
+},
 
     plugins: [forms],
 };
