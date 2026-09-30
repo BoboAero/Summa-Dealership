@@ -26,7 +26,12 @@
                     <x-slot name="trigger">
                         <button
                             class="inline-flex items-center px-3 py-2 border border-transparent text-base leading-4 font-bold rounded-md text-dark-blue bg-white hover:text-pink focus:outline-none transition ease-in-out duration-150">
-                            <div>{{ Auth::user()->name }}</div>
+                            @if(Auth::user() == null)
+                                <div>Not Logged In</div>
+                            @else
+                                <div>{{ Auth::user()->name }}</div>
+                            @endif
+
 
                             <div class="ms-3">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -85,8 +90,18 @@
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
             <div class="px-4">
-                <div class="text-base text-dark-blue">{{ Auth::user()->name }}</div>
-                <div class="text-sm text-gray-500">{{ Auth::user()->email }}</div>
+
+                @if(Auth::user() == null)
+                    <div class="text-base text-dark-blue">Not Logged In</div>
+                    <div class="text-sm text-gray-500">Not Logged In</div>
+                @else
+                    <div class="text-base text-dark-blue">{{ Auth::user()->name }}</div>
+                    <div class="text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                @endif
+
+
+
+
             </div>
 
             <div class="mt-3 space-y-1">
