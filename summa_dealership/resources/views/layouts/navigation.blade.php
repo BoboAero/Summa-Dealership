@@ -1,4 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow-sm font-jaldi font-bold">
+
+
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -83,7 +85,7 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
             <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
             <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
         </div>
 

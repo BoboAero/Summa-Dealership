@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gebruiker Aanpassen</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="CuBody">
+<x-app-layout>
+<div class="CuBody">
 <h1>Gebruiker Aanpassen</h1>
 <div class="CuForm">
     <form class="CuFormGrid" autocomplete="off" method="post" action="{{route('users.update', $user->id)}}">
@@ -52,5 +45,5 @@
         </ul>
     </div>
 @endif
-</body>
-</html>
+</div>
+</x-app-layout>>
