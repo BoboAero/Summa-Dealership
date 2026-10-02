@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow-sm font-jaldi font-bold">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow-sm text-xl font-jaldi font-bold">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -12,7 +12,7 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    {{-- Replace the route names with your own --}}
+                    {{-- Hier komen de routes als ze af zijn --}}
                     <x-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-nav-link>
                     <x-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-nav-link>
                     <x-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-nav-link>
@@ -25,7 +25,7 @@
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-base leading-4 font-bold rounded-md text-dark-blue bg-white hover:text-pink focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center px-3 py-2 border border-transparent text-xl leading-4 font-bold rounded-md text-dark-blue bg-white hover:text-pink focus:outline-none transition ease-in-out duration-150">
                             @if(Auth::user() == null)
                                 <div>Not Logged In</div>
                             @else
@@ -92,11 +92,11 @@
             <div class="px-4">
 
                 @if(Auth::user() == null)
-                    <div class="text-base text-dark-blue">Not Logged In</div>
-                    <div class="text-sm text-gray-500">Not Logged In</div>
+                    <div class="text-xl text-dark-blue">Not Logged In</div>
+                    <div class="text-xl text-gray-500">Not Logged In</div>
                 @else
-                    <div class="text-base text-dark-blue">{{ Auth::user()->name }}</div>
-                    <div class="text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="text-xl text-dark-blue">{{ Auth::user()->name }}</div>
+                    <div class="text-xl text-gray-500">{{ Auth::user()->email }}</div>
                 @endif
 
 
