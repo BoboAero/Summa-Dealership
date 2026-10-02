@@ -6,7 +6,8 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('../images/summadealership.png') }}" alt="Summa Dealership" class="block h-10 w-auto">
+                        <img src="{{ asset('../images/summadealership.png') }}" alt="Summa Dealership"
+                            class="block h-10 w-auto">
                     </a>
                 </div>
 
@@ -79,46 +80,39 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
+<div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div class="py-2 divide-y divide-gray-100">
+        <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
+        <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
+        <x-responsive-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
+        <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
+    </div>
+
+    <!-- Responsive Settings Options -->
+    <div class="mt-2 pt-4 pb-2 border-t-8 border-gray-100">
+        <div class="px-6 pb-3">
+            @if(Auth::user() == null)
+                <div class="text-xl text-dark-blue">Not Logged In</div>
+            @else
+                <div class="text-xl font-bold text-dark-blue">{{ Auth::user()->name }}</div>
+                <div class="text-lg font-normal text-gray-500 break-all">{{ Auth::user()->email }}</div>
+            @endif
         </div>
 
-        <!-- Responsive Settings Options -->
-        <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
+        <div class="divide-y divide-gray-100">
+            <x-responsive-nav-link :href="route('profile.edit')">
+                {{ __('Profile') }}
+            </x-responsive-nav-link>
 
-                @if(Auth::user() == null)
-                    <div class="text-xl text-dark-blue">Not Logged In</div>
-                    <div class="text-xl text-gray-500">Not Logged In</div>
-                @else
-                    <div class="text-xl text-dark-blue">{{ Auth::user()->name }}</div>
-                    <div class="text-xl text-gray-500">{{ Auth::user()->email }}</div>
-                @endif
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
 
-
-
-
-            </div>
-
-            <div class="mt-3 space-y-1">
-                <x-responsive-nav-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
+                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Log Out') }}
                 </x-responsive-nav-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                        this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
-            </div>
+            </form>
         </div>
     </div>
+</div>
 </nav>
