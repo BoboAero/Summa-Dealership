@@ -80,13 +80,6 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-<div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-    <div class="py-2 divide-y divide-gray-100">
-        <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
-        <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
-        <x-responsive-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
-        <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
-    </div>
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
