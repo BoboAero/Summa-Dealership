@@ -16,7 +16,7 @@
                     {{-- Hier komen de routes als ze af zijn --}}
                     <x-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-nav-link>
                     <x-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-nav-link>
-                    <x-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-nav-link>
+                    <x-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-nav-link>
                     <x-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-nav-link>
                 </div>
             </div>
@@ -84,9 +84,16 @@
     <div class="py-2 divide-y divide-gray-100">
         <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
         <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
-        <x-responsive-nav-link href="#" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
+        <x-responsive-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
         <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
     </div>
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+        <div class="pt-2 pb-3 space-y-1">
+            <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
+        </div>
 
     <!-- Responsive Settings Options -->
     <div class="mt-2 pt-4 pb-2 border-t-8 border-gray-100">
@@ -114,5 +121,6 @@
             </form>
         </div>
     </div>
+</div>
 </div>
 </nav>
