@@ -1,5 +1,4 @@
 <x-app-layout>
-
     <body>
     <div class="UserManagement">
         <h1 class="TableHeader" style="grid-area: userHeader;">Gebruikers</h1>

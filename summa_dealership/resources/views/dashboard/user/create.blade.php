@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="CuBody">
         <h1>Nieuwe gebruiker aanmaken</h1>
         <div class="CuForm">
