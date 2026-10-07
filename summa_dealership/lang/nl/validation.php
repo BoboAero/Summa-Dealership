@@ -284,5 +284,12 @@ return [
         'winner'                   => 'winnaar',
         'work'                     => 'werk',
         'year'                     => 'jaar',
+
+        // Database fields die nog niet vertaald zijn komen hier onder.
+
+        'model'                     => 'model',
+        'stock'                     => 'voorraad',
+        
+        
     ],
 ];
