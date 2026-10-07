@@ -78,7 +78,7 @@
         <div class="mt-6 pt-6 border-t border-gray-200 text-center">
             <p class="text-sm text-gray-600 mb-3">{{ __('Need an account?') }}</p>
             <a href="{{ route('register') }}"
-                class="inline-flex items-center justify-center w-full px-4 py-2 bg-dark-blue border border-gray-300 rounded-md font-semibold text-xs text-white uppercase tracking-widest shadow-sm hover:bg-dark-blue/90 transition ease-in-out duration-150">
+                class="inline-flex items-center justify-center w-full px-4 py-2 bg-dark-blue border border-gray-300 rounded-md font-semibold text-xs text-white uppercase tracking-widest shadow-sm hover:bg-dark-blue/90 focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 transition ease-in-out duration-150">
                 {{ __('Register') }}
             </a>
         </div>
