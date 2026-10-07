@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Reparaties</title>
-        @vite('resources/css/app.css')
-    </head>
+<x-app-layout>
     <body>
         <div class="UserManagement">
             <h1 class="TableHeader" style="grid-area: userHeader">
@@ -42,4 +35,4 @@
             </table>
         </div>
     </body>
-</html>
+</x-app-layout>>
