@@ -21,7 +21,7 @@
 
         <!-- Password -->
         <div class="mt-4" x-data="{ show: false }">
-            <x-input-label for="password" :value="__('Password')" />
+            <x-input-label for="password" :value="__('Wachtwoord')" />
 
             <div class="relative">
                 <x-text-input id="password" class="block mt-1 w-full pe-12" x-bind:type="show ? 'text' : 'password'"
@@ -29,15 +29,13 @@
 
                 <button type="button" x-on:click="show = !show"
                     class="absolute inset-y-0 end-0 flex items-center px-3 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-indigo-600"
-                    x-bind:aria-label="show ? 'Hide password' : 'Show password'" x-bind:aria-pressed="show">
-                    <!-- Eye (shown when password is hidden) -->
+                    x-bind:aria-label="show ? 'Verberg wachtwoord' : 'Toon wachtwoord'" x-bind:aria-pressed="show">
                     <svg x-show="!show" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round"
                             d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
-                    <!-- Eye with slash (shown when password is visible) -->
                     <svg x-show="show" x-cloak xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -49,12 +47,11 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
-        <!-- Remember Me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
                     class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                <span class="ms-2 text-sm text-gray-600">{{ __('Gegevens onthouden') }}</span>
             </label>
         </div>
 
@@ -63,12 +60,12 @@
             @if (Route::has('password.request'))
                 <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
+                    {{ __('Wachtwoord vergeten?') }}
                 </a>
             @endif
 
             <x-primary-button>
-                {{ __('Log in') }}
+                {{ __('Inloggen') }}
             </x-primary-button>
         </div>
     </form>
@@ -76,10 +73,10 @@
     <!-- Register button -->
     @if (Route::has('register'))
         <div class="mt-6 pt-6 border-t border-gray-200 text-center">
-            <p class="text-sm text-gray-600 mb-3">{{ __('Need an account?') }}</p>
+            <p class="text-sm text-gray-600 mb-3">{{ __('Nog geen account?') }}</p>
             <a href="{{ route('register') }}"
                 class="inline-flex items-center justify-center w-full px-4 py-2 bg-dark-blue border border-gray-300 rounded-md font-semibold text-xs text-white uppercase tracking-widest shadow-sm hover:bg-dark-blue/90 focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 transition ease-in-out duration-150">
-                {{ __('Register') }}
+                {{ __('Registreren') }}
             </a>
         </div>
     @endif
