@@ -21,12 +21,10 @@ body {
 }
 
 .TableHeader{
-    align-self: left;
     padding-left: 5%;
 }
 
 .TableAddButton{
-    align-self: right;
 }
 
 /*Crud Index Table*/
@@ -63,18 +61,15 @@ body {
 }
 
 .CuFormGrid{
-    display: grid;
-    grid-template-columns: 5fr 5fr;
-    grid-template-rows: 2fr 2fr 2fr;
-    grid-template-areas:
-        'name password'
-        'email role'
-        'back create';
+    display: flex;
+    flex-flow: row wrap;
     div{
         display: flex;
         flex-flow: column nowrap;
         justify-content: center;
         align-items: center;
+        margin-bottom: 15px;
+        width: 50%;
     }
     select, input{
         width: 75%;
@@ -90,6 +85,7 @@ body {
     justify-content: center;
     background-color: #8E8E93;
     border-radius: 10px;
+    margin: 5px;
 }
 
 .CuCreateButton{
@@ -98,6 +94,7 @@ body {
     color: #FFFFFF;
     background-color: #20126E;
     border-radius: 10px;
+    margin: 5px;
 }
 
 

@@ -46,7 +46,8 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-           'name' => ['required', 'string', 'max:255', 'alpha:ascii'],
+           'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
+            'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'role_id' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
@@ -54,6 +55,7 @@ class UserController extends Controller
 
         $user = User::create([
             'name' => $this->ucname($request->name),
+            'username' => strtolower($request->username),
             'email' => strtolower($request->email),
             'role_id' => $request->role_id,
             'password' => Hash::make($request->password),
@@ -86,7 +88,8 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255', 'alpha:ascii'],
+            'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
+            'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
             'role_id' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
@@ -95,7 +98,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $user->name = $this->ucname($request->name);
+
         $user->email = strtolower($request->email);
+        $user->username = strtolower($request->username);
         $user->role_id = $request->role_id;
         $user->password = Hash::make($request->password);
         $user->save();

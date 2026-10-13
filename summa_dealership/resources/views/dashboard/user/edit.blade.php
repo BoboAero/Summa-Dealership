@@ -9,6 +9,10 @@
                 <label for="userName" >Naam</label>
                 <input autocomplete="off" required type="text" id="userName" name="name" value="{{$user->name}}">
             </div>
+            <div >
+                <label for="userUsername" >Gebruikersnaam</label>
+                <input autocomplete="off" required type="text" id="userUsername" name="username" value="{{$user->username}}">
+            </div>
             <div style="grid-area: password">
                 <label for="userPassword">Wachtwoord</label>
                 <input autocomplete="off" required type="password" minlength="8" id="userPassword" name="password">
@@ -25,10 +29,8 @@
                     @endforeach
                 </select>
             </div>
-            <div style="grid-area: back">
+            <div style="flex-direction: row">
                 <a href="{{route('users.index')}}" class="CuBackButton">Terug</a>
-            </div>
-            <div style="grid-area: create">
                 <button type="submit" class="CuCreateButton">Aanpassen</button>
             </div>
         </form>

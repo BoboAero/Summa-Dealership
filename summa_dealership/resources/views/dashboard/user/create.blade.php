@@ -9,6 +9,10 @@
                     <label for="userName" >Naam</label>
                     <input autocomplete="off" required type="text" id="userName" name="name">
                 </div>
+                <div >
+                    <label for="userUsername" >Gebruikersnaam</label>
+                    <input autocomplete="off" required type="text" id="userUsername" name="username">
+                </div>
                 <div style="grid-area: password">
                     <label for="userPassword">Wachtwoord</label>
                     <input autocomplete="off" required type="password" minlength="8" id="userPassword" name="password">
@@ -21,14 +25,12 @@
                     <label for="userRole">Role</label>
                     <select id="userRole" name="role_id">
                         @foreach($roles as $role)
-                            <option value="{{$role->id}}" @if($role->id == 5) selected @endif>{{$role->name}}</option>
+                            <option value="{{$role->id}}" @if($role->id == 6) selected @endif>{{$role->name}}</option>
                         @endforeach
                     </select>
                 </div>
-                <div style="grid-area: back">
+                <div style="flex-direction: row">
                     <a href="{{route('users.index')}}" class="CuBackButton">Terug</a>
-                </div>
-                <div style="grid-area: create">
                     <button type="submit" class="CuCreateButton">Aanmaken</button>
                 </div>
             </form>

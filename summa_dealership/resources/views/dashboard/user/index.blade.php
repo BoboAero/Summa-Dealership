@@ -7,6 +7,7 @@
             <thead>
             <tr class="">
                 <td>Naam</td>
+                <td>Gebruikersnaam</td>
                 <td>Email</td>
                 <td>Rol</td>
                 <td>Aanpassingen</td>
@@ -14,6 +15,7 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{$user->name}}</td>
+                    <td>{{$user->username}}</td>
                     <td>{{$user->email}}</td>
                     <td>{{$user->Role->name}}</td>
                     <td style="display: flex;flex-direction: row; justify-content: center;">
