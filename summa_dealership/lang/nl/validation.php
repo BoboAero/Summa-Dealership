@@ -289,7 +289,13 @@ return [
 
         'model'                     => 'model',
         'stock'                     => 'voorraad',
-        
-        
+
+
+    ],
+    'custom' => [
+        'name' => [
+            'required' => 'Je moet een naam invullen',
+            'regex' => 'Je naam mag alleen letters en spaties bevatten'
+        ],
     ],
 ];

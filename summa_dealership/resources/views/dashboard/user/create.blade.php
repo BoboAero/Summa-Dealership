@@ -6,20 +6,26 @@
             <form class="CuFormGrid" autocomplete="off" method="post" action="{{route('users.store')}}">
                 @csrf
                 <div style="grid-area: name">
+                    <x-input-error :messages="$errors->get('name')" class="mt-2" />
                     <label for="userName" >Naam</label>
-                    <input autocomplete="off" required type="text" id="userName" name="name">
+                    <input autocomplete="off" required type="text" id="userName" name="name" value="{{old('name')}}">
+
                 </div>
                 <div >
+                    <x-input-error :messages="$errors->get('username')" class="mt-2" />
                     <label for="userUsername" >Gebruikersnaam</label>
-                    <input autocomplete="off" required type="text" id="userUsername" name="username">
+                    <input autocomplete="off" required type="text" id="userUsername" name="username" value="{{old('username')}}">
+
                 </div>
                 <div style="grid-area: password">
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
                     <label for="userPassword">Wachtwoord</label>
                     <input autocomplete="off" required type="password" minlength="8" id="userPassword" name="password">
                 </div>
                 <div style="grid-area: email">
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                     <label for="userEmail">Email</label>
-                    <input autocomplete="off" required type="email" id="userEmail" name="email">
+                    <input autocomplete="off" required type="email" id="userEmail" name="email" value="{{old('email')}}">
                 </div>
                 <div style="grid-area: role">
                     <label for="userRole">Role</label>
@@ -35,17 +41,5 @@
                 </div>
             </form>
         </div>
-        @if($errors->any())
-            <div>
-                <p>ERRORS:</p>
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>
-                            {{$error}}
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
     </div>
 </x-app-layout>
