@@ -33,6 +33,12 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'username' => [
+                'required',
+                'string',
+                'max:255',
+                'unique:' . User::class,
+                ],
             'email' => [
                 'required',
                 'string',
@@ -49,10 +55,11 @@ class RegisteredUserController extends Controller
         ]);
 
         // Find the default role for newly registered users.
-        $role = Role::where('name', 'Verkoper')->firstOrFail();
+        $role = Role::where('name', 'Klant')->firstOrFail();
 
         $user = User::create([
             'name' => ucwords($request->name),
+            'username' => strtolower($request->username),
             'email' => strtolower($request->email),
             'password' => Hash::make($request->password),
             'role_id' => $role->id,
