@@ -1,5 +1,5 @@
 # Summa-Dealership
-**Stappen om het project te installeren:**
+## **Stappen om het project te installeren:**
 
 1: git clone https://github.com/BoboAero/Summa-Dealership.git
   
@@ -18,8 +18,7 @@
 8: php artisan migrate:fresh
 
 
-
-**Project opstarten:**
+## **Project opstarten:**
 
 1: npm run dev
 
