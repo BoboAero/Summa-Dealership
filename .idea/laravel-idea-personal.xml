@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="LaravelProcessCommands">
+    <option name="commands">
+      <list>
+        <ProcessCommand>
+          <option name="command" value="serve" />
+          <option name="id" value="0e06f31e-e8a2-477e-a988-0194bcd0654f" />
+          <option name="label" value="Dev server" />
+        </ProcessCommand>
+        <ProcessCommand>
+          <option name="command" value="npm run dev" />
+          <option name="id" value="b5a31d94-20bd-454a-b6bb-dadcb9f346f6" />
+          <option name="label" value="npm run dev" />
+          <option name="type" value="SHELL" />
+        </ProcessCommand>
+        <ProcessCommand>
+          <option name="command" value="queue:work" />
+          <option name="id" value="ea7ec8cb-afc7-4868-b563-43ed6a8b811d" />
+          <option name="label" value="Default queue worker" />
+          <option name="parseQueueOutput" value="true" />
+        </ProcessCommand>
+      </list>
+    </option>
+  </component>
+</project>
