@@ -14,6 +14,18 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
+
+    public function ucname($input){
+        $output = "";
+        $exceptions = array("van", "der", "den");
+        $input = strtolower($input);
+        foreach(explode(" ", $input) as $key => $word){
+            $output .= (($word == $word[0]) ? "" : " ") . ((!in_array($word, $exceptions)) ? ucfirst($word) : $word);
+
+        }
+        return $output;
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
@@ -26,13 +38,17 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        $request->user()->fill($request->validated());
+        $request->validate([
+            'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
+            'username' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255'],
+        ]);
+        $user = $request->user();
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-
-        $request->user()->save();
+        $user->name = $this->ucname($request->name);
+        $user->email = strtolower($request->email);
+        $user->username = strtolower($request->username);
+        $user->save();
 
         return Redirect::route('profile.edit')->with('status', 'profile-updated');
     }
@@ -57,4 +73,5 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
 }

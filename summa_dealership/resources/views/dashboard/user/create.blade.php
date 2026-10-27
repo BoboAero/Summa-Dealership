@@ -14,7 +14,7 @@
                 <div >
                     <x-input-error :messages="$errors->get('username')" class="mt-2" />
                     <label for="userUsername" >Gebruikersnaam</label>
-                    <input autocomplete="off" required type="text" id="userUsername" name="username" value="{{old('username')}}">
+                    <input autocomplete="off"  required type="text" id="userUsername" name="username" value="{{old('username')}}">
 
                 </div>
                 <div style="grid-area: password">

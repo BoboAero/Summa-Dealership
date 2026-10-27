@@ -130,9 +130,31 @@
       <path value="$PROJECT_DIR$/summa_dealership/vendor/league/uri" />
       <path value="$PROJECT_DIR$/summa_dealership/vendor/league/flysystem-local" />
       <path value="$PROJECT_DIR$/summa_dealership/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/codezero/browser-locale" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/archtechx/enums" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/dragon-code/contracts" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/dragon-code/pretty-array" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/dragon-code/support" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/actions" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/attributes" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/common" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/config" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/http-statuses" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/json-fallback" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/lang" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/locale-list" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/locales" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/models" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/moonshine" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/native-country-names" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/native-currency-names" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/native-locale-names" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/publisher" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/routes" />
+      <path value="$PROJECT_DIR$/summa_dealership/vendor/laravel-lang/starter-kits" />
     </include_path>
   </component>
-  <component name="PhpProjectSharedConfiguration" php_language_level="8.2">
+  <component name="PhpProjectSharedConfiguration">
     <option name="suggestChangeDefaultLanguageLevel" value="false" />
   </component>
   <component name="PhpStanOptionsConfiguration">
