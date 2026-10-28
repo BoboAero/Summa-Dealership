@@ -1,38 +1,46 @@
 <x-app-layout>
-    <body>
-        <div class="UserManagement">
-            <h1 class="TableHeader" style="grid-area: userHeader">
-                Reparaties
-            </h1>
-            <table class="ManageTable" style="grid-area: userTable">
-                <thead>
-                    <tr class="">
-                        <td>Monteur</td>
-                        <td>Auto in reparatie</td>
-                        <td>Descriptie</td>
-                        <td>Onderdelen</td>
-                        <td>Show</td>
-                    </tr>
-                    @foreach($repairs as $repair)
-                    <tr>
-                        <td>{{$repair->User->name}}</td>
-                        <td>{{$repair->Car->name}}</td>
-                        <td>{{ $repair->description }}</td>
+    <div class="repairs-page">
+        <div class="repairs-page__inner">
 
-                        <td>
-                            @foreach($repair->parts as $part) {{ $part->name
-                            }}<br />
-                            @endforeach
-                        </td>
-                        <td>
-                            <a href="{{ route('repairs.show', $repair) }}">
-                                Bekijken
+            <div class="repairs-page__header">
+                <h1 class="repairs-page__title">Reparaties</h1>
+
+                <a href="{{ route('repairs.create') }}" class="btn btn--pink">
+                    Nieuwe Reparatie
+                </a>
+            </div>
+
+            <div class="repair-list scroll-styled">
+                @forelse($repairs as $repair)
+                    <div class="repair-row">
+                        <span class="repair-row__title">
+                            {{ Str::limit($repair->description, 60) }}
+                        </span>
+
+                        <div class="repair-row__actions">
+                            <a href="{{ route('repairs.show', $repair) }}" class="btn btn--small btn--green">
+                                Bekijk
                             </a>
-                        </td>
-                        @endforeach
-                    </tr>
-                </thead>
-            </table>
+                            <a href="{{ route('repairs.edit', $repair->id) }}" class="btn btn--small btn--blue">
+                                Bewerk
+                            </a>
+
+                            <form method="POST" action="{{ route('repairs.destroy', $repair) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn--small btn--red">
+                                    Verwijder
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                @empty
+                    <div class="repair-list__empty">
+                        <span class="repair-list__empty-text">Er zijn nog geen reparaties.</span>
+                    </div>
+                @endforelse
+            </div>
+
         </div>
-    </body>
-</x-app-layout>>
+    </div>
+</x-app-layout>

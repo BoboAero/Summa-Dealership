@@ -100,4 +100,319 @@ body {
 
 
 
+:root {
+    --pink: #e8308a;         
+    --dark-blue: #20126e;     
+    --field-bg: #c1b8fa;
+    --row-alt-bg: #a198cd;
+    --grey-btn: #b0adad;
+    --grey-btn-hover: #9a9797;
+}
+
+/* ---------- Pagina ---------- */
+.repairs-page,
+.repairs-page *,
+.repairs-page *::before,
+.repairs-page *::after {
+    box-sizing: border-box;
+}
+
+.repairs-page {
+    padding: 40px;
+}
+
+.repairs-page__inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.repairs-page__title {
+    margin: 0 0 32px;
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+
+.repairs-page__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+.repairs-page__header .repairs-page__title {
+    margin: 0;
+}
+
+/* ---------- Formulier-grid ---------- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 48px;
+    row-gap: 24px;
+}
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+}
+@media (min-width: 768px) {
+    .form-actions {
+        grid-column-start: 2;
+    }
+}
+
+/* ---------- Velden ---------- */
+.field__label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--pink);
+}
+
+.field__wrap {
+    position: relative;
+}
+
+.field__input,
+.field__select,
+.field__static {
+    width: 100%;
+    height: 40px;
+    border: 1px solid var(--dark-blue);
+    border-radius: 10px;
+    background: var(--field-bg);
+    padding: 0 40px 0 12px;
+    font-family: inherit;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--dark-blue);
+}
+
+.field__select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2320126e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 18px 18px;
+}
+
+.field__input:focus,
+.field__select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--pink);
+}
+
+/* Alleen-lezen waarde (show-pagina) */
+.field__static {
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+}
+
+.field__icon {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    width: 20px;
+    height: 20px;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--dark-blue);
+}
+
+/* ---------- Scrollbalk ---------- */
+.scroll-styled {
+    overflow-y: auto;
+}
+.scroll-styled::-webkit-scrollbar {
+    width: 8px;
+}
+.scroll-styled::-webkit-scrollbar-track {
+    background: transparent;
+}
+.scroll-styled::-webkit-scrollbar-thumb {
+    background: var(--dark-blue);
+    border-radius: 9999px;
+}
+.scroll-styled--hover::-webkit-scrollbar-thumb:hover {
+    background: var(--pink);
+}
+
+/* ---------- Onderdelen ---------- */
+.parts-box {
+    height: 144px;
+    border: 1px solid var(--dark-blue);
+    border-radius: 10px;
+    background: var(--field-bg);
+    padding: 8px 12px;
+}
+
+.part {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 4px 0;
+}
+.part--clickable {
+    cursor: pointer;
+}
+
+.part__checkbox {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    accent-color: var(--dark-blue);
+}
+.part__checkbox:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--pink);
+}
+
+.part__name,
+.part-empty {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    color: var(--dark-blue);
+}
+.part-empty {
+    margin: 0;
+}
+
+/* ---------- Knoppen ---------- */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    margin: 0;
+    padding: 0 20px;
+    border: 1px solid var(--dark-blue);
+    border-radius: 10px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.15s, opacity 0.15s;
+}
+.btn:hover {
+    opacity: 0.9;
+}
+
+.btn--pink {
+    background: var(--pink);
+}
+.btn--pink:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--dark-blue);
+}
+
+.btn--primary {
+    background: var(--dark-blue);
+}
+.btn--primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--pink);
+}
+
+.btn--back {
+    background: var(--grey-btn);
+}
+.btn--back:hover {
+    opacity: 1;
+    background: var(--grey-btn-hover);
+}
+
+/* Kleine knoppen in de lijst */
+.btn--small {
+    height: 32px;
+    padding: 0 12px;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+.btn--green { background: #66bb6a; }
+.btn--blue  { background: #0a84ff; }
+.btn--red   { background: #c0444a; }
+
+/* ---------- Lijst (index) ---------- */
+.repair-list {
+    max-height: 600px;
+    border: 1px solid var(--dark-blue);
+    border-radius: 10px;
+    background: var(--field-bg);
+}
+
+.repair-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    min-height: 56px;
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--dark-blue);
+    background: var(--field-bg);
+}
+.repair-row:nth-child(even) {
+    background: var(--row-alt-bg);
+}
+.repair-row:last-child {
+    border-bottom: 0;
+}
+
+.repair-row__title,
+.repair-list__empty-text {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+
+.repair-row__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.repair-row__actions form {
+    margin: 0;
+}
+
+.repair-list__empty {
+    display: flex;
+    align-items: center;
+    min-height: 56px;
+    padding: 0 16px;
+}
+
+/* ---------- Foutmelding ---------- */
+.alert {
+    margin-top: 24px;
+    padding: 20px;
+    border: 1px solid #fca5a5;
+    border-radius: 12px;
+    background: #fee2e2;
+}
+.alert__title {
+    margin: 0 0 8px;
+    font-weight: 700;
+    color: #991b1b;
+}
+.alert__list {
+    margin: 0;
+    padding: 0;
+    list-style: disc inside;
+    color: #b91c1c;
+}
 

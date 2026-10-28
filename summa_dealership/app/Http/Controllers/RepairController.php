@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Repair;
+use App\Models\Car;
+use App\Models\User;
+use App\Models\Part;
 use Illuminate\Http\Request;
 
 class RepairController extends Controller
@@ -13,7 +16,7 @@ class RepairController extends Controller
     public function index()
     {
         $repairs = Repair::all();
-        return view('dashboard.repair.index', compact('repairs'));
+        return view("dashboard.repairs.index", compact("repairs"));
     }
 
     /**
@@ -21,7 +24,12 @@ class RepairController extends Controller
      */
     public function create()
     {
-        //
+        $repairs = Repair::all();
+        $cars = Car::whereDoesntHave("repairs")->get();
+        $users = User::all();
+        $parts = Part::all();
+
+        return view( "dashboard.repairs.create", compact("repairs", "cars", "users", "parts"));
     }
 
     /**
@@ -29,7 +37,23 @@ class RepairController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "description" => ["required", "string", "max:255", "min:1"],
+            "user_id" => ["required", "integer"],
+            "car_id" => ["required", "integer", "unique:repairs,car_id"],
+            "parts" => ["nullable", "array"],
+            "parts.*" => ["integer", "exists:parts,id"],
+        ]);
+
+        $repair = Repair::create([
+            "description" => $request->description,
+            "user_id" => $request->user_id,
+            "car_id" => $request->car_id,
+        ]);
+
+        $repair->parts()->sync($request->parts ?? []);
+
+        return redirect()->route("repairs.index");
     }
 
     /**
@@ -37,7 +61,7 @@ class RepairController extends Controller
      */
     public function show(Repair $repair)
     {
-        return view('dashboard.repair.show', compact('repair'));
+        return view("dashboard.repairs.show", compact("repair"));
     }
 
     /**
@@ -45,15 +69,41 @@ class RepairController extends Controller
      */
     public function edit(Repair $repair)
     {
-       //
-    }
+        $cars = Car::whereDoesntHave("repairs")->orWhere("id", $repair->car_id)->get();
+        $users = User::all();
+        $parts = Part::all();
 
+        return view(
+            "dashboard.repairs.edit",
+            compact("repair", "cars", "users", "parts"),
+        );
+    }
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Repair $repair)
     {
-        //
+        $request->validate([
+            "description" => ["required", "string", "max:255", "min:1"],
+            "user_id" => ["required", "integer"],
+            "car_id" => [
+                "required",
+                "integer",
+                "unique:repairs,car_id," . $repair->id,
+            ],
+            "parts" => ["nullable", "array"],
+            "parts.*" => ["integer", "exists:parts,id"],
+        ]);
+
+        $repair->update([
+            "description" => $request->description,
+            "user_id" => $request->user_id,
+            "car_id" => $request->car_id,
+        ]);
+
+        $repair->parts()->sync($request->parts ?? []);
+
+        return redirect()->route("repairs.index");
     }
 
     /**
@@ -61,6 +111,8 @@ class RepairController extends Controller
      */
     public function destroy(Repair $repair)
     {
-        //
+        $repair->parts()->detach();
+        $repair->delete();
+        return redirect()->route("repairs.index");
     }
 }
