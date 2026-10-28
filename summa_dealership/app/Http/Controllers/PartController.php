@@ -13,7 +13,7 @@ class PartController extends Controller
     public function index()
     {
         $parts = Part::all();
-        return view('test', compact('parts'));
+        return view('dashboard.parts.index', compact('parts'));
     }
 
     /**

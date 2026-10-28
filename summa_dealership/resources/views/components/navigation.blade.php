@@ -14,10 +14,10 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     {{-- Hier komen de routes als ze af zijn --}}
-                    <x-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-nav-link>
-                    <x-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-nav-link>
+                    <x-nav-link href="{{route('cars.index')}}" :active="false">{{ __('Auto\'s') }}</x-nav-link>
+                    <x-nav-link href="{{route('parts.index')}}" :active="false">{{ __('Onderdelen') }}</x-nav-link>
                     <x-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-nav-link>
-                    <x-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-nav-link>
+                    <x-nav-link href="{{route('repairs.index')}}" :active="false">{{ __('Reparatie') }}</x-nav-link>
                 </div>
             </div>
 
