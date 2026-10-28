@@ -5,13 +5,12 @@
             class="h-20 w-auto sm:h-24 object-contain">
     </div>
 
-    <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Email Address -->
+        <!-- Gebruikersnaam -->
         <div>
             <x-input-label for="username" :value="__('Gebruikersnaam')" />
             <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required
@@ -19,7 +18,7 @@
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
-        <!-- Password -->
+        <!-- Wachtwoord -->
         <div class="mt-4" x-data="{ show: false }">
             <x-input-label for="password" :value="__('Wachtwoord')" />
 
@@ -47,6 +46,7 @@
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
+        <!-- Remember me -->
         <div class="block mt-4">
             <label for="remember_me" class="inline-flex items-center">
                 <input id="remember_me" type="checkbox"
@@ -55,29 +55,31 @@
             </label>
         </div>
 
-        <!-- Forgot password + Log in -->
-        <div class="flex flex-wrap items-center justify-end gap-3 mt-4">
+        <!-- Login -->
+        <div class="mt-6">
+            <x-primary-button class="w-full justify-center py-3 text-sm !bg-dark-blue hover:!bg-dark-blue/90">
+                {{ __('Inloggen') }}
+            </x-primary-button>
+        </div>
+
+        <!-- Registeren -->
+        <div class="flex flex-wrap items-center justify-between gap-2 mt-6 text-sm">
+            @if (Route::has('register'))
+                <p class="text-gray-600">
+                    {{ __('Nog geen account?') }}
+                    <a href="{{ route('register') }}"
+                        class="font-medium text-gray-700 underline hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                        {{ __('Registreren') }}
+                    </a>
+                </p>
+            @endif
+
             @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                <a class=" underline text-gray-700 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     href="{{ route('password.request') }}">
                     {{ __('Wachtwoord vergeten?') }}
                 </a>
             @endif
-
-            <x-primary-button>
-                {{ __('Inloggen') }}
-            </x-primary-button>
         </div>
     </form>
-
-    <!-- Register button -->
-    @if (Route::has('register'))
-        <div class="mt-6 pt-6 border-t border-gray-200 text-center">
-            <p class="text-sm text-gray-600 mb-3">{{ __('Nog geen account?') }}</p>
-            <a href="{{ route('register') }}"
-                class="inline-flex items-center justify-center w-full px-4 py-2 bg-dark-blue border border-gray-300 rounded-md font-semibold text-xs text-white uppercase tracking-widest shadow-sm hover:bg-dark-blue/90 focus:outline-none focus:ring-2 focus:ring-pink focus:ring-offset-2 transition ease-in-out duration-150">
-                {{ __('Registreren') }}
-            </a>
-        </div>
-    @endif
 </x-guest-layout>
