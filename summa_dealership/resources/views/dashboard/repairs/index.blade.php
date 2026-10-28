@@ -13,8 +13,8 @@
             <div class="repair-list scroll-styled">
                 @forelse($repairs as $repair)
                     <div class="repair-row">
-                        <span class="repair-row__title">
-                            {{ Str::limit($repair->description, 60) }}
+                        <span class="repair-row__title truncate">
+                            {{ Str::limit($repair->description, 80) }}
                         </span>
 
                         <div class="repair-row__actions">
