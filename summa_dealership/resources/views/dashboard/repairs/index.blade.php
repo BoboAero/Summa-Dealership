@@ -25,7 +25,8 @@
                                 Bewerk
                             </a>
 
-                            <form method="POST" action="{{ route('repairs.destroy', $repair) }}">
+                            <form method="POST" action="{{ route('repairs.destroy', $repair) }}"
+                             onsubmit="return confirm('Weet je zeker dat je deze reparatie wilt verwijderen?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn--small btn--red">
