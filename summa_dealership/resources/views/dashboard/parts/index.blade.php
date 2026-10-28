@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
-    <p>Parts</p>
+    <h1>Pagina voor onderdelen</h1>
 </body>
 </html>
+</x-app-layout>
