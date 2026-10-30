@@ -49,7 +49,7 @@ class UserController extends Controller
            'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
             'username' => ['required', 'string', 'max:255', 'unique:'.User::class],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
-            'role_id' => ['required', 'integer'],
+            'role' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
         ]);
 
@@ -57,7 +57,7 @@ class UserController extends Controller
             'name' => $this->ucname($request->name),
             'username' => strtolower($request->username),
             'email' => strtolower($request->email),
-            'role_id' => $request->role_id,
+            'role_id' => $request->role,
             'password' => Hash::make($request->password),
         ]);
 
@@ -67,17 +67,16 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $user)
     {
-        //
+        return view('dashboard.user.show', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        $user = User::findOrFail($id);
         $roles = Role::all();
         return view('dashboard.user.edit', compact('user', 'roles'));
     }
@@ -85,24 +84,22 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255', 'regex:/^[\pL\s]+$/u'],
             'username' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'],
-            'role_id' => ['required', 'integer'],
             'password' => ['required', 'string', 'min:8'],
+            'role' => ['required', 'integer'],
         ]);
-
-        $user = User::findOrFail($id);
 
         $user->name = $this->ucname($request->name);
 
         $user->email = strtolower($request->email);
         $user->username = strtolower($request->username);
-        $user->role_id = $request->role_id;
         $user->password = Hash::make($request->password);
+        $user->role_id = $request->role;
         $user->save();
         return(redirect(route('users.index')));
     }
@@ -110,9 +107,8 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        $user = User::findOrFail($id);
         $user->delete();
         return(redirect(route('users.index')));
     }

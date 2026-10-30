@@ -1,51 +1,110 @@
 <x-app-layout>
-    <div class="CuBody">
-    <h1>Gebruiker Aanpassen</h1>
-    <div class="CuForm">
-        <form class="CuFormGrid" autocomplete="off" method="post" action="{{route('users.update', $user->id)}}">
-            @csrf
-            @method('PUT')
-            <div style="grid-area: name">
-                <label for="userName" >Naam</label>
-                <input autocomplete="off" required type="text" id="userName" name="name" value="{{$user->name}}">
-            </div>
-            <div >
-                <label for="userUsername" >Gebruikersnaam</label>
-                <input autocomplete="off" required type="text" id="userUsername" name="username" value="{{$user->username}}">
-            </div>
-            <div style="grid-area: password">
-                <label for="userPassword">Wachtwoord</label>
-                <input autocomplete="off" required type="password" minlength="8" id="userPassword" name="password">
-            </div>
-            <div style="grid-area: email">
-                <label for="userEmail">Email</label>
-                <input autocomplete="off" required type="email" id="userEmail" name="email" value="{{$user->email}}">
-            </div>
-            <div style="grid-area: role">
-                <label for="userRole">Role</label>
-                <select id="userRole" name="role_id">
-                    @foreach($roles as $role)
-                        <option value="{{$role->id}}" @if($role->id == $user->role_id) selected @endif>{{$role->name}}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div style="flex-direction: row">
-                <a href="{{route('users.index')}}" class="CuBackButton">Terug</a>
-                <button type="submit" class="CuCreateButton">Aanpassen</button>
-            </div>
-        </form>
-    </div>
-    @if($errors->any())
-        <div>
-            <p>ERRORS:</p>
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>
-                        {{$error}}
-                    </li>
-                @endforeach
-            </ul>
+    <div class="repairs-page">
+        <div class="repairs-page__inner">
+            <h1 class="repairs-page__title">Gebruikers bewerken</h1>
+
+            <form class="form-grid" autocomplete="off" method="post" action="{{ route('users.update', $user) }}">
+                @csrf
+                @method('PUT')
+                <div>
+                    <label for="name" class="field__label">Naam</label>
+
+                    <div class="field__wrap">
+                        <input
+                            autocomplete="off"
+                            required
+                            type="text"
+                            id="name"
+                            name="name"
+                            value="{{ $user->name }}"
+                            class="field__input"
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <label for="username" class="field__label">Gebruikersnaam</label>
+
+                    <div class="field__wrap">
+                        <input
+                            autocomplete="off"
+                            required
+                            type="text"
+                            id="username"
+                            name="username"
+                            value="{{ $user->username }}"
+                            class="field__input"
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <label for="email" class="field__label">Email</label>
+
+                    <div class="field__wrap">
+                        <input
+                            autocomplete="off"
+                            required
+                            type="email"
+                            id="email"
+                            name="email"
+                            value="{{ $user->email }}"
+                            class="field__input"
+                        >
+                    </div>
+                </div>
+
+                <div>
+                    <label for="password" class="field__label">Wachtwoord</label>
+
+                    <div class="field__wrap">
+                        <input
+                            autocomplete="off"
+                            required
+                            type="password"
+                            id="password"
+                            name="password"
+                            class="field__input"
+                        >
+                    </div>
+
+                    <div>
+                        <label for="role" class="field__label">Rol</label>
+                        <div class="field__wrap">
+                            <select id="role" name="role" class="field__select">
+                                @foreach($roles as $role)
+                                    <option value="{{$role->id}}" @if($role->id == $user->role_id) selected @endif>
+                                        {{$role->name}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-actions">
+                    <a href="{{ route('users.index') }}" class="btn btn--back">
+                        Terug
+                    </a>
+
+                    <button type="submit" class="btn btn--pink">
+                        Opslaan
+                    </button>
+                </div>
+            </form>
+
+            @if($errors->any())
+                <div class="alert">
+                    <p class="alert__title">Er zijn fouten opgetreden:</p>
+
+                    <ul class="alert__list">
+                        @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         </div>
-    @endif
     </div>
-</x-app-layout>>
+</x-app-layout>

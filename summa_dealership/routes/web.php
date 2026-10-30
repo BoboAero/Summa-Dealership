@@ -37,9 +37,11 @@ Route::prefix('users')->middleware(roleCheck::class.':manager')->group(function 
     Route::get('/', [UserController::class, 'index'])->name('users.index');
     Route::get("create", [UserController::class, 'create'])->name('users.create');
     Route::get("{user}/edit", [UserController::class, 'edit'])->name('users.edit');
+    Route::get("{user}/show", [UserController::class, 'show'])->name('users.show');
     Route::post("store", [UserController::class, 'store'])->name('users.store');
     Route::delete("{user}/destroy", [UserController::class, 'destroy'])->name('users.destroy');
     Route::put("{user}/update", [UserController::class, 'update'])->name('users.update');
+
 });
 
 
