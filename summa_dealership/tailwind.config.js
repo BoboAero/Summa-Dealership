@@ -18,6 +18,11 @@ export default {
         fontFamily: {
             jaldi: ['Jaldi', 'sans-serif'],
         },
+        screens: {
+            'nav': '850px',
+        },
+
+        
     },
 },
 

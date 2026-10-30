@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow-sm text-xl font-jaldi font-bold">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -12,27 +12,25 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    {{-- Hier komen de routes als ze af zijn --}}
-                    <x-nav-link href="{{route('cars.index')}}" :active="false">{{ __('Auto\'s') }}</x-nav-link>
-                    <x-nav-link href="{{route('parts.index')}}" :active="false">{{ __('Onderdelen') }}</x-nav-link>
-                    <x-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-nav-link>
-                    <x-nav-link href="{{route('repairs.index')}}" :active="false">{{ __('Reparatie') }}</x-nav-link>
+                <div class="hidden space-x-8 nav:-my-px nav:ms-10 nav:flex">
+                    <x-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.*')">{{ __('Auto\'s') }}</x-nav-link>
+                    <x-nav-link href="{{ route('parts.index') }}" :active="request()->routeIs('parts.*')">{{ __('Onderdelen') }}</x-nav-link>
+                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">{{ __('Medewerkers') }}</x-nav-link>
+                    <x-nav-link href="{{ route('repairs.index') }}" :active="request()->routeIs('repairs.*')">{{ __('Reparatie') }}</x-nav-link>
                 </div>
             </div>
 
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center sm:ms-6">
+            <div class="hidden nav:flex nav:items-center nav:ms-6 shrink-0">
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button
-                            class="inline-flex items-center px-3 py-2 border border-transparent text-xl leading-4 font-bold rounded-md text-dark-blue bg-white hover:text-pink focus:outline-none transition ease-in-out duration-150">
+                            class="inline-flex items-center whitespace-nowrap px-3 py-2 border border-transparent text-xl leading-4 font-bold rounded-md text-dark-blue bg-white hover:text-pink focus:outline-none transition ease-in-out duration-150">
                             @if(Auth::user() == null)
                                 <div>Not Logged In</div>
                             @else
                                 <div>{{ Auth::user()->name }}</div>
                             @endif
-
 
                             <div class="ms-3">
                                 <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +62,7 @@
             </div>
 
             <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
+            <div class="-me-2 flex items-center nav:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 rounded-md text-dark-blue hover:text-pink hover:bg-gray-100 focus:outline-none transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -80,39 +78,39 @@
     </div>
 
     <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
+    <div :class="{'block': open, 'hidden': ! open}" class="hidden nav:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link href="#" :active="false">{{ __('Auto\'s') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="true">{{ __('Onderdelen') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="{{route('users.index')}}" :active="false">{{ __('Medewerkers') }}</x-responsive-nav-link>
-            <x-responsive-nav-link href="#" :active="false">{{ __('Reparatie') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('cars.index') }}" :active="request()->routeIs('cars.*')">{{ __('Auto\'s') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('parts.index') }}" :active="request()->routeIs('parts.*')">{{ __('Onderdelen') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.*')">{{ __('Medewerkers') }}</x-responsive-nav-link>
+            <x-responsive-nav-link href="{{ route('repairs.index') }}" :active="request()->routeIs('repairs.*')">{{ __('Reparatie') }}</x-responsive-nav-link>
         </div>
 
-    <!-- Responsive Settings Options -->
-    <div class="mt-2 pt-4 pb-2 border-t-8 border-gray-100">
-        <div class="px-6 pb-3">
-            @if(Auth::user() == null)
-                <div class="text-xl text-dark-blue">Not Logged In</div>
-            @else
-                <div class="text-xl font-bold text-dark-blue">{{ Auth::user()->name }}</div>
-                <div class="text-lg font-normal text-gray-500 break-all">{{ Auth::user()->email }}</div>
-            @endif
-        </div>
+        <!-- Responsive Settings Options -->
+        <div class="mt-2 pt-4 pb-2 border-t-8 border-gray-100">
+            <div class="px-6 pb-3">
+                @if(Auth::user() == null)
+                    <div class="text-xl text-dark-blue">Not Logged In</div>
+                @else
+                    <div class="text-xl font-bold text-dark-blue">{{ Auth::user()->name }}</div>
+                    <div class="text-lg font-normal text-gray-500 break-all">{{ Auth::user()->email }}</div>
+                @endif
+            </div>
 
-        <div class="divide-y divide-gray-100">
-            <x-responsive-nav-link :href="route('profile.edit')">
-                {{ __('Profile') }}
-            </x-responsive-nav-link>
-
-            <form method="POST" action="{{ route('logout') }}">
-                @csrf
-
-                <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
-                                    this.closest('form').submit();">
-                    {{ __('Log Out') }}
+            <div class="divide-y divide-gray-100">
+                <x-responsive-nav-link :href="route('profile.edit')">
+                    {{ __('Profile') }}
                 </x-responsive-nav-link>
-            </form>
+
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')" onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 </nav>
