@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Repair;
+use App\Models\Car;
+use App\Models\User;
 use App\Models\Part;
 use Illuminate\Http\Request;
 
@@ -19,9 +22,12 @@ class PartController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+  public function create()
     {
-        //
+        $parts = Part::all();
+
+
+        return view( "dashboard.parts.create", compact("parts", "name", "price", "stock"));
     }
 
     /**
@@ -29,7 +35,20 @@ class PartController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         $request->validate([
+            "name" => ["required", "varchar", "max:255"],
+            "price" => ["required", "double"],
+            "stock" => ["required", "integer"],
+            
+        ]);
+
+        $part = Part::create([
+            "name" => $request->name,
+            "price" => $request->price,
+            "stock" => $request->stock,
+        ]);
+
+        return redirect()->route("parts.index");
     }
 
     /**
@@ -37,7 +56,7 @@ class PartController extends Controller
      */
     public function show(Part $part)
     {
-        //
+        return view("dashboard.parts.show", compact("part"));
     }
 
     /**
@@ -45,7 +64,12 @@ class PartController extends Controller
      */
     public function edit(Part $part)
     {
-        //
+        $parts = Part::all();
+
+        return view(
+            "dashboard.parts.edit",
+            compact("part", "name", "price", "stock"),
+        );
     }
 
     /**
@@ -53,7 +77,12 @@ class PartController extends Controller
      */
     public function update(Request $request, Part $part)
     {
-        //
+         $request->validate([
+            "name" => ["required", "varchar", "max:255"],
+            "price" => ["required", "double"],
+            "stock" => ["required", "integer"],
+                
+            ]);
     }
 
     /**
@@ -61,6 +90,7 @@ class PartController extends Controller
      */
     public function destroy(Part $part)
     {
-        //
+        $part->delete();
+        return redirect()->route("parts.index");
     }
 }
