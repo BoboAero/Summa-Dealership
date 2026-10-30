@@ -136,17 +136,6 @@ body {
     color: var(--dark-blue);
 }
 
-.repairs-page__header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
-}
-
-.repairs-page__header .repairs-page__title {
-    margin: 0;
-}
-
 /* ---------- Formulier-grid ---------- */
 .form-grid {
     display: grid;
@@ -272,6 +261,7 @@ body {
     align-items: center;
     gap: 12px;
     padding: 4px 0;
+
 }
 
 .part--clickable {
@@ -352,87 +342,6 @@ body {
     background: var(--grey-btn-hover);
 }
 
-/* Kleine knoppen in de lijst */
-.btn--small {
-    height: 32px;
-    padding: 0 12px;
-    font-size: 0.875rem;
-    line-height: 1.25rem;
-}
-
-.btn--green {
-    background: #66bb6a;
-}
-
-.btn--blue {
-    background: #0a84ff;
-}
-
-.btn--red {
-    background: #c0444a;
-}
-
-/* ---------- Lijst (index) ---------- */
-.repair-list {
-    max-height: 600px;
-    border: 1px solid var(--dark-blue);
-    border-radius: 10px;
-    background: var(--field-bg);
-}
-
-.repair-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    min-height: 56px;
-    padding: 8px 16px;
-    border-bottom: 1px solid var(--dark-blue);
-    background: var(--field-bg);
-}
-
-.repair-row:nth-child(even) {
-    background: var(--row-alt-bg);
-}
-
-.repair-row:last-child {
-    border-bottom: 0;
-}
-
-.repair-row__title,
-.repair-list__empty-text {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-    font-weight: 700;
-    color: var(--dark-blue);
-}
-
-.repair-row__title {
-    display: block;
-    min-width: 0;
-    max-width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.repair-row__actions {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.repair-row__actions form {
-    margin: 0;
-}
-
-.repair-list__empty {
-    display: flex;
-    align-items: center;
-    min-height: 56px;
-    padding: 0 16px;
-}
-
 /* ---------- Foutmelding ---------- */
 .alert {
     margin-top: 24px;
@@ -457,32 +366,6 @@ body {
 
 /* ---------- CSS breakpoints ---------- */
 @media (max-width: 600px) {
-    .repair-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 15px;
-        padding-bottom: 15px;
-    }
-
-    .repair-row__title {
-        width: 100%;
-        max-width: 100%;
-        text-align: left;
-    }
-
-    .repair-row__actions {
-        align-self: flex-start;
-    }
-
-    .repairs-page__header {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .repairs-page__header>a {
-        width: 100%;
-    }
-
     .repairs-page__title {
         width: 100%;
         max-width: 100%;
