@@ -1,90 +1,89 @@
 <x-app-layout>
-    <div class="repairs-page">
-        <div class="repairs-page__inner">
-            <h1 class="repairs-page__title">Gebruikers aanmaken</h1>
+    <div class="page">
+        <div class="page__inner">
+            <h1 class="page__title">Gebruikers aanmaken</h1>
 
-            <form class="form-grid" autocomplete="off" method="post" action="{{ route('users.store') }}">
+            <form class="form__grid" autocomplete="off" method="post" action="{{ route('users.store') }}">
                 @csrf
                 <div>
-                    <label for="name" class="field__label">Naam</label>
+                    <label for="name" class="form-field__label">Naam</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
                             type="text"
                             id="name"
                             name="name"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="username" class="field__label">Gebruikersnaam</label>
+                    <label for="username" class="form-field__label">Gebruikersnaam</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
                             type="text"
                             id="username"
                             name="username"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="email" class="field__label">Email</label>
+                    <label for="email" class="form-field__label">Email</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
                             type="email"
                             id="email"
                             name="email"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="password" class="field__label">Wachtwoord</label>
+                    <label for="password" class="form-field__label">Wachtwoord</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
                             type="password"
                             id="password"
                             name="password"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
-
-                    <div>
-                        <label for="role" class="field__label">Rol</label>
-                        <div class="field__wrap">
-                            <select id="role" name="role" class="field__select" required>
-                                @foreach($roles as $role)
-                                    <option value="{{$role->id}}">
-                                        {{$role->name}}
-                                    </option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
                 </div>
 
-                <div class="form-actions">
-                    <a href="{{ route('users.index') }}" class="btn btn--back">
+                <div>
+                    <label for="role" class="form-field__label">Rol</label>
+                    <div class="form-field__wrap">
+                        <select id="role" name="role" class="form-field__select" required>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}">
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form__actions">
+                    <a href="{{ route('users.index') }}" class="button button--back">
                         Terug
                     </a>
 
-                    <button type="submit" class="btn btn--pink">
+                    <button type="submit" class="button button--pink">
                         Opslaan
                     </button>
                 </div>

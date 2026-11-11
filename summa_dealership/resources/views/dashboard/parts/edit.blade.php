@@ -1,11 +1,11 @@
 <x-app-layout>
-    <div class="repairs-page">
-        <div class="repairs-page__inner">
+    <div class="page">
+        <div class="page__inner">
 
-            <h1 class="repairs-page__title">Onderdeel bewerken</h1>
+            <h1 class="page__title">Onderdeel bewerken</h1>
 
             <form
-                class="form-grid"
+                class="form__grid"
                 autocomplete="off"
                 method="post"
                 action="{{ route('parts.update', $part) }}"
@@ -14,9 +14,9 @@
                 @method('PUT')
 
                 <div>
-                    <label for="partName" class="field__label">Naam</label>
+                    <label for="partName" class="form-field__label">Naam</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
@@ -25,15 +25,15 @@
                             name="name"
                             value="{{ old('name', $part->name) }}"
                             maxlength="255"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="partPrice" class="field__label">Prijs (€)</label>
+                    <label for="partPrice" class="form-field__label">Prijs (€)</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
@@ -43,15 +43,15 @@
                             id="partPrice"
                             name="price"
                             value="{{ old('price', $part->price) }}"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="partStock" class="field__label">Voorraad</label>
+                    <label for="partStock" class="form-field__label">Voorraad</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
@@ -61,17 +61,17 @@
                             id="partStock"
                             name="stock"
                             value="{{ old('stock', $part->stock) }}"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
-                <div class="form-actions">
-                    <a href="{{ route('parts.index') }}" class="btn btn--back">
+                <div class="form__actions">
+                    <a href="{{ route('parts.index') }}" class="button button--back">
                         Terug
                     </a>
 
-                    <button type="submit" class="btn btn--pink">
+                    <button type="submit" class="button button--pink">
                         Opslaan
                     </button>
                 </div>

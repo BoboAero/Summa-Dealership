@@ -111,24 +111,24 @@ body {
 
 
 /* ---------- Pagina ---------- */
-.repairs-page,
-.repairs-page *,
-.repairs-page *::before,
-.repairs-page *::after {
+.page,
+.page *,
+.page *::before,
+.page *::after {
     box-sizing: border-box;
 }
 
-.repairs-page {
+.page {
     padding: 40px;
 }
 
-.repairs-page__inner {
+.page__inner {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.repairs-page__title {
+.page__title {
     margin: 0 0 32px;
     font-size: 1.5rem;
     line-height: 2.25rem;
@@ -136,8 +136,8 @@ body {
     color: var(--dark-blue);
 }
 
-/* ---------- Formulier-grid ---------- */
-.form-grid {
+/* ---------- Formulier ---------- */
+.form__grid {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 48px;
@@ -145,25 +145,25 @@ body {
 }
 
 @media (min-width: 768px) {
-    .form-grid {
+    .form__grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-.form-actions {
+.form__actions {
     display: flex;
     justify-content: flex-end;
     gap: 16px;
 }
 
 @media (min-width: 768px) {
-    .form-actions {
+    .form__actions {
         grid-column-start: 2;
     }
 }
 
-/* ---------- Velden ---------- */
-.field__label {
+/* ---------- Formuliervelden ---------- */
+.form-field__label {
     display: block;
     margin-bottom: 4px;
     font-size: 1.25rem;
@@ -172,13 +172,13 @@ body {
     color: var(--pink);
 }
 
-.field__wrap {
+.form-field__wrap {
     position: relative;
 }
 
-.field__input,
-.field__select,
-.field__static {
+.form-field__input,
+.form-field__select,
+.form-field__static {
     width: 100%;
     height: 40px;
     border: 1px solid var(--dark-blue);
@@ -191,7 +191,7 @@ body {
     color: var(--dark-blue);
 }
 
-.field__select {
+.form-field__select {
     appearance: none;
     -webkit-appearance: none;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2320126e' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
@@ -200,20 +200,20 @@ body {
     background-size: 18px 18px;
 }
 
-.field__input:focus,
-.field__select:focus {
+.form-field__input:focus,
+.form-field__select:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--pink);
 }
 
-/* Alleen-lezen waarde (show-pagina) */
-.field__static {
+/* Alleen-lezen waarde (show-pagina)*/
+.form-field__static {
     display: flex;
     align-items: center;
     padding-right: 12px;
 }
 
-.field__icon {
+.form-field__icon {
     position: absolute;
     top: 50%;
     right: 12px;
@@ -247,8 +247,8 @@ body {
     background: var(--pink);
 }
 
-/* ---------- Onderdelen ---------- */
-.parts-box {
+/* ---------- Selectie ---------- */
+.selection-box {
     height: 144px;
     border: 1px solid var(--dark-blue);
     border-radius: 10px;
@@ -256,43 +256,42 @@ body {
     padding: 8px 12px;
 }
 
-.part {
+.selection-item {
     display: flex;
     align-items: center;
     gap: 12px;
     padding: 4px 0;
-
 }
 
-.part--clickable {
+.selection-item--clickable {
     cursor: pointer;
 }
 
-.part__checkbox {
+.selection-item__checkbox {
     width: 16px;
     height: 16px;
     margin: 0;
     accent-color: var(--dark-blue);
 }
 
-.part__checkbox:focus {
+.selection-item__checkbox:focus {
     outline: none;
     box-shadow: 0 0 0 2px var(--pink);
 }
 
-.part__name,
-.part-empty {
+.selection-item__name,
+.selection-empty {
     font-size: 0.875rem;
     line-height: 1.25rem;
     color: var(--dark-blue);
 }
 
-.part-empty {
+.selection-empty {
     margin: 0;
 }
 
 /* ---------- Knoppen ---------- */
-.btn {
+.button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -311,33 +310,33 @@ body {
     transition: background-color 0.15s, opacity 0.15s;
 }
 
-.btn:hover {
+.button:hover {
     opacity: 0.9;
 }
 
-.btn--pink {
+.button--pink {
     background: var(--pink);
 }
 
-.btn--pink:focus {
+.button--pink:focus {
     outline: none;
     box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--dark-blue);
 }
 
-.btn--primary {
+.button--primary {
     background: var(--dark-blue);
 }
 
-.btn--primary:focus {
+.button--primary:focus {
     outline: none;
     box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--pink);
 }
 
-.btn--back {
+.button--back {
     background: var(--grey-btn);
 }
 
-.btn--back:hover {
+.button--back:hover {
     opacity: 1;
     background: var(--grey-btn-hover);
 }
@@ -364,9 +363,9 @@ body {
     color: #b91c1c;
 }
 
-/* ---------- CSS breakpoints ---------- */
+/* ---------- Responsive styling ---------- */
 @media (max-width: 600px) {
-    .repairs-page__title {
+    .page__title {
         width: 100%;
         max-width: 100%;
         text-align: left;

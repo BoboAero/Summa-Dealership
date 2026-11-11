@@ -1,15 +1,15 @@
 <x-app-layout>
-    <div class="repairs-page">
-        <div class="repairs-page__inner">
-            <h1 class="repairs-page__title">Reparatie bewerken</h1>
+    <div class="page">
+        <div class="page__inner">
+            <h1 class="page__title">Reparatie bewerken</h1>
 
-            <form class="form-grid" autocomplete="off" method="post" action="{{ route('repairs.update', $repair) }}">
+            <form class="form__grid" autocomplete="off" method="post" action="{{ route('repairs.update', $repair) }}">
                 @csrf
                 @method('PUT')
                 <div>
-                    <label for="userName" class="field__label">Naam</label>
+                    <label for="userName" class="form-field__label">Naam</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <input
                             autocomplete="off"
                             required
@@ -17,19 +17,19 @@
                             id="userName"
                             name="description"
                             value="{{ $repair->description }}"
-                            class="field__input"
+                            class="form-field__input"
                         >
                     </div>
                 </div>
 
                 <div>
-                    <label for="car" class="field__label">Auto</label>
+                    <label for="car" class="form-field__label">Auto</label>
 
-                    <div class="field__wrap">
+                    <div class="form-field__wrap">
                         <select
                             id="car"
                             name="car_id"
-                            class="field__select"
+                            class="form-field__select"
                             @disabled($cars->isEmpty())
                         >
                             @forelse($cars as $car)
@@ -46,10 +46,10 @@
                 </div>
 
                 <div>
-                    <label for="userRole" class="field__label">Medewerker</label>
+                    <label for="userRole" class="form-field__label">Medewerker</label>
 
-                    <div class="field__wrap">
-                        <select id="userRole" name="user_id" class="field__select">
+                    <div class="form-field__wrap">
+                        <select id="userRole" name="user_id" class="form-field__select">
                             @foreach($users as $user)
                                 <option value="{{ $user->id }}" @if($user->id == $repair->user_id) selected @endif>
                                     {{ $user->name }}
@@ -60,30 +60,30 @@
                 </div>
 
                 <div>
-                    <span class="field__label">Beschikbare Onderdelen</span>
+                    <span class="form-field__label">Beschikbare Onderdelen</span>
 
-                    <div class="parts-box scroll-styled scroll-styled--hover">
+                    <div class="selection-box scroll-styled scroll-styled--hover">
                         @foreach($parts as $part)
-                            <label class="part part--clickable">
+                            <label class="selection-item selection-item--clickable">
                                 <input
                                     type="checkbox"
                                     name="parts[]"
                                     value="{{ $part->id }}"
                                     @if($repair->parts->contains('id', $part->id)) checked @endif
-                                    class="part__checkbox"
+                                    class="selection-item__checkbox"
                                 >
-                                <span class="part__name">{{ $part->name }}</span>
+                                <span class="selection-item__name">{{ $part->name }}</span>
                             </label>
                         @endforeach
                     </div>
                 </div>
 
-                <div class="form-actions">
-                    <a href="{{ route('repairs.index') }}" class="btn btn--back">
+                <div class="form__actions">
+                    <a href="{{ route('repairs.index') }}" class="button button--back">
                         Terug
                     </a>
 
-                    <button type="submit" class="btn btn--pink">
+                    <button type="submit" class="button button--pink">
                         Opslaan
                     </button>
                 </div>
