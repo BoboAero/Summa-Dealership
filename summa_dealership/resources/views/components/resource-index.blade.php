@@ -53,7 +53,7 @@
                         <form method="POST" action="{{ route($resource . '.destroy', $item) }}">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="{{ $btnSmall }} bg-[#c0444a]">
+                            <button type="submit" class="{{ $btnSmall }} bg-[#c0444a]" onclick="return confirm('Weet je zeker dat je dit item wilt verwijderen?')">
                                 Verwijder
                             </button>
                         </form>
